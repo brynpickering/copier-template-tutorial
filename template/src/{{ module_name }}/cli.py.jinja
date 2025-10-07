@@ -1,0 +1,30 @@
+"""Command-line interface for {{ project_name }}."""
+
+import click
+
+from {{ module_name }} import __version__
+
+
+@click.group()
+@click.version_option(version=__version__)
+def main():
+    """{{ project_description }}"""
+    pass
+
+
+@main.command()
+@click.option("--name", default="World", help="Name to greet")
+def greet(name: str):
+    """Greet someone."""
+    click.echo(f"Hello, {name}!")
+
+
+@main.command()
+def info():
+    """Display project information."""
+    click.echo(f"{{ project_name }} v{__version__}")
+    click.echo(f"{{ project_description }}")
+
+
+if __name__ == "__main__":
+    main()

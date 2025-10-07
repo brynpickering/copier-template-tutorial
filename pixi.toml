@@ -1,0 +1,26 @@
+[project]
+name = "copier-template-tutorial"
+version = "0.1.0"
+description = "A comprehensive Copier template for Python projects"
+authors = ["Bryn Pickering"]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+[dependencies]
+python = ">=3.9"
+copier = ">=9.0.0"
+
+[tasks]
+test-template = "copier copy --defaults --vcs-ref HEAD . /tmp/test-project"
+
+[feature.dev.dependencies]
+pre-commit = ">=3.0.0"
+ruff = ">=0.1.0"
+
+[feature.dev.tasks]
+lint = "ruff check ."
+format = "ruff format ."
+format-check = "ruff format --check ."
+
+[environments]
+default = ["dev"]

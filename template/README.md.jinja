@@ -1,0 +1,66 @@
+# {{ project_name }}
+
+{{ project_description }}
+
+## Installation
+
+```bash
+pip install {{ project_name }}
+```
+
+## Usage
+
+{{ project_name }} provides a command-line interface:
+
+```bash
+{{ module_name }} --help
+```
+
+## Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/{{ github_username }}/{{ project_name }}.git
+cd {{ project_name }}
+```
+
+Install development dependencies:
+
+```bash
+pip install -e ".[dev,docs]"
+```
+
+Install pre-commit hooks:
+
+```bash
+pre-commit install
+```
+
+Run tests:
+
+```bash
+pytest
+```
+
+## Documentation
+
+Documentation is available at [https://{{ github_username }}.github.io/{{ project_name }}](https://{{ github_username }}.github.io/{{ project_name }})
+
+Build documentation locally:
+
+```bash
+mkdocs serve
+```
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+## License
+
+This project is licensed under the {{ license }} License - see the LICENSE file for details.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a history of changes to this project.
