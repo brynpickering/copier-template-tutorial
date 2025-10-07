@@ -6,11 +6,13 @@ project_name:
   type: str
   help: What is your project name?
   placeholder: "my-awesome-project"
+  default: "my-awesome-project"
 
 project_description:
   type: str
   help: A short description of your project
   placeholder: "A Python project created from a copier template"
+  default: "A Python project created from a copier template"
 
 module_name:
   type: str
@@ -22,16 +24,19 @@ author_name:
   type: str
   help: What is your name?
   placeholder: "Your Name"
+  default: "Your Name"
 
 author_email:
   type: str
   help: What is your email?
   placeholder: "your.email@example.com"
+  default: "your.email@example.com"
 
 github_username:
   type: str
   help: What is your GitHub username?
   placeholder: "yourusername"
+  default: "yourusername"
 
 license:
   type: str
