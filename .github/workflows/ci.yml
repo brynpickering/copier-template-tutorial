@@ -36,7 +36,7 @@ jobs:
           pixi-version: latest
 
       - name: Generate test project
-        run: pixi run test-template
+        run: pixi run test-template ${{ runner.temp }}/test-project
 
       - name: Set up Python in test project
         uses: actions/setup-python@v5
@@ -45,7 +45,7 @@ jobs:
 
       - name: Test generated project
         shell: bash
-        working-directory: /tmp/test-project
+        working-directory: ${{ runner.temp }}/test-project
         run: |
           python -m pip install --upgrade pip
           pip install -e ".[dev]"

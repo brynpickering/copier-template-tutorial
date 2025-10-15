@@ -140,10 +140,10 @@ pixi run pre-commit install
 Generate a test project:
 
 ```bash
-pixi run test-template
+pixi run test-template <path-to-directory>
 ```
 
-This creates a test project in `/tmp/test-project`.
+Where `<path-to-directory>` is defined by you, e.g. as a temporary directory `/tmp/test-project`
 
 ### Linting and Formatting
 

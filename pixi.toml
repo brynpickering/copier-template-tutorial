@@ -7,11 +7,12 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
 
 [dependencies]
-python = ">=3.9"
+python = ">=3.10"
 copier = ">=9.0.0"
 
-[tasks]
-test-template = "copier copy --defaults --vcs-ref HEAD . /tmp/test-project"
+[tasks.test-template]
+args = ["path"]
+cmd = "copier copy --defaults --vcs-ref HEAD . {{ path }}"
 
 [feature.dev.dependencies]
 pre-commit = ">=3.0.0"
