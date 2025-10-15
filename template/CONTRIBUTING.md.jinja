@@ -1,0 +1,69 @@
+# Contributing to {{ project_name }}
+
+Thank you for considering contributing to {{ project_name }}! We appreciate your time and effort.
+
+## Getting Started
+
+1. Fork the repository
+2. Clone your fork: `git clone https://github.com/{{ github_username }}/{{ project_name }}.git`
+3. Create a new branch: `git checkout -b feature/your-feature-name`
+
+## Development Setup
+
+Install the development dependencies:
+
+```bash
+pip install -e ".[dev,docs]"
+```
+
+Install pre-commit hooks:
+
+```bash
+pre-commit install
+```
+
+## Making Changes
+
+1. Make your changes in your feature branch
+2. Add tests for your changes
+3. Run the test suite: `pytest`
+4. Run the linter: `ruff check .`
+5. Format your code: `ruff format .`
+6. Commit your changes with a descriptive message
+
+## Pull Request Process
+
+1. Update the CHANGELOG.md with details of your changes
+2. Ensure all tests pass and code is properly formatted
+3. Push your branch to your fork
+4. Submit a pull request to the main repository
+5. Wait for review and address any feedback
+
+## Code Style
+
+This project uses:
+- [Ruff](https://github.com/astral-sh/ruff) for linting and formatting
+- Type hints where applicable
+- Clear, descriptive variable and function names
+
+## Testing
+
+All new features should include appropriate tests. Run tests with:
+
+```bash
+pytest
+```
+
+## Documentation
+
+If you're adding new features, please update the documentation in the `docs/` directory.
+
+Build documentation locally:
+
+```bash
+mkdocs serve
+```
+
+## Questions?
+
+Feel free to open an issue if you have any questions or need clarification.
