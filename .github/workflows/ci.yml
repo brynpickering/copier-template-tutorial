@@ -45,8 +45,8 @@ jobs:
 
       - name: Test generated project
         shell: bash
+        working-directory: /tmp/test-project
         run: |
-          cd /tmp/test-project
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
           pytest
