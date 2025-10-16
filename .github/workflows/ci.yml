@@ -46,11 +46,17 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v6
 
+      - name: Setup repo as git repo
+        working-directory: ${{ runner.temp }}/test-project
+        run: |
+          git config --global --add safe.directory .
+          git config --global user.name Docs deploy
+          git config --global user.email docs@dummy.bot.com
+
       - name: Test generated project
         shell: bash
         working-directory: ${{ runner.temp }}/test-project
         run: |
-          uv add --dev git
           uv run --dev pytest
           uv run --dev reuse download --all
           uv run --dev pre-commit install
