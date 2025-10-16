@@ -1,0 +1,80 @@
+# SPDX-FileCopyrightText: Arup (pypackage-template & actions-city-modelling-lab contributors)
+# SPDX-FileCopyrightText: {{ project_name }} contributors
+#
+# SPDX-License-Identifier: {{ license }}
+
+name: Docs CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - tests/**
+      - ".github/**/*"
+      - "!.github/workflows/docs.yml"
+
+
+jobs:
+  docs-lint:
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: markdown-link-check
+      uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        config-file: linkcheck.json
+    - if: github.event.repository.private
+      uses: pre-commit/action@v3.0.1
+      with:
+        extra_args: pymarkdown --all-files
+    - if: github.event.repository.private
+      uses: pre-commit/action@v3.0.1
+      with:
+        extra_args: codespell --all-files
+
+  docs-build:
+    needs: [docs-lint]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+
+    - uses: actions/checkout@v5
+      id: branch-exists
+      with:
+        path: tmp/gh-pages
+        ref: gh-pages
+      continue-on-error: true
+
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: "3.10"
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v6
+
+    - name: Setup doc deploy
+      run: |
+        git config --global user.name Docs deploy
+        git config --global user.email docs@dummy.bot.com
+
+    - name: Test that docs build
+      if: github.ref != 'refs/heads/main'
+      run: uv --group docs mike deploy develop
+
+    - name: Link development version to `latest` in documentation
+      if: github.ref == 'refs/heads/main' && steps.branch-exists.outcome == 'failure'
+      run: |
+        uv --group docs mike deploy --push --update-aliases develop latest
+        uv --group docs mike set-default --push latest
+
+    - name: Deploy latest docs to gh-pages branch
+      if: github.ref == 'refs/heads/main'
+      run: uv --group docs mike deploy --push develop
