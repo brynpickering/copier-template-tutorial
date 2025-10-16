@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: {{ project_name }} contributors
+#
+# SPDX-License-Identifier: {{ license }}
+
 # Contributing to {{ project_name }}
 
 Thank you for considering contributing to {{ project_name }}! We appreciate your time and effort.
@@ -5,30 +9,25 @@ Thank you for considering contributing to {{ project_name }}! We appreciate your
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/{{ github_username }}/{{ project_name }}.git`
-3. Create a new branch: `git checkout -b feature/your-feature-name`
+1. Clone your fork: `git clone https://github.com/{{ github_username }}/{{ project_name }}.git`
+1. Create a new branch: `git checkout -b feature/your-feature-name`
+1. Download and install [uv](https://docs.astral.sh/uv/).
 
 ## Development Setup
-
-Install the development dependencies:
-
-```bash
-pip install -e ".[dev,docs]"
-```
 
 Install pre-commit hooks:
 
 ```bash
-pre-commit install
+uv run --dev pre-commit install
 ```
 
 ## Making Changes
 
 1. Make your changes in your feature branch
 2. Add tests for your changes
-3. Run the test suite: `pytest`
-4. Run the linter: `ruff check .`
-5. Format your code: `ruff format .`
+3. Run the test suite: `uv run --dev pytest`
+4. Run the linter: `uv run --dev ruff check .`
+5. Format your code: `uv run --dev ruff format .`
 6. Commit your changes with a descriptive message
 
 ## Pull Request Process

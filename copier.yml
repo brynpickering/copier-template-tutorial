@@ -48,12 +48,11 @@ license:
     - GPL-3.0
     - BSD-3-Clause
 
-python_version:
+min_python_version:
   type: str
   help: Minimum Python version
-  default: "3.9"
+  default: "3.10"
   choices:
-    - "3.9"
     - "3.10"
     - "3.11"
     - "3.12"

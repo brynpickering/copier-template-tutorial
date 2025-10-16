@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: {{ project_name }} contributors
+#
+# SPDX-License-Identifier: {{ license }}
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
@@ -21,3 +25,8 @@ repos:
     hooks:
       - id: codespell
         args: [--ignore-words-list=crate,nd,sav,ines]
+
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: v6.0.0
+    hooks:
+      - id: reuse

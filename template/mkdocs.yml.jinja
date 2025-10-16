@@ -1,8 +1,13 @@
+# SPDX-FileCopyrightText: {{ project_name }} contributors
+#
+# SPDX-License-Identifier: {{ license }}
+
 site_name: {{ project_name }}
 site_description: {{ project_description }}
 site_author: {{ author_name }}
 repo_url: https://github.com/{{ github_username }}/{{ project_name }}
 repo_name: {{ github_username }}/{{ project_name }}
+copyright: Copyright {{ project_name }} contributors ({{ license }} licensed)
 
 theme:
   name: material
@@ -42,9 +47,34 @@ markdown_extensions:
   - attr_list
   - md_in_html
 
+plugins:
+  - search
+  - autorefs
+
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_bases: true
+            filters:
+              - "!^_"
+            heading_level: 1
+            show_root_heading: true
+            merge_init_into_class: true
+            show_if_no_docstring: true
+            signature_crossrefs: true
+            show_root_toc_entry: false
+            show_signature_annotations: false
+            inherited_members: true
+          paths: [src]
+          import:
+            - https://docs.python.org/3/objects.inv
+            - https://pandas.pydata.org/docs/objects.inv
+            - https://docs.xarray.dev/en/stable/objects.inv
+
 nav:
   - Home: index.md
-  - Getting Started: getting-started.md
   - API Reference: api.md
   - Contributing: contributing.md
   - Changelog: changelog.md

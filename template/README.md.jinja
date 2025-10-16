@@ -1,22 +1,12 @@
+# SPDX-FileCopyrightText: {{ project_name }} contributors
+#
+# SPDX-License-Identifier: {{ license }}
+
 # {{ project_name }}
 
 {{ project_description }}
 
 ## Installation
-
-```bash
-pip install {{ project_name }}
-```
-
-## Usage
-
-{{ project_name }} provides a command-line interface:
-
-```bash
-{{ module_name }} --help
-```
-
-## Development
 
 Clone the repository:
 
@@ -25,23 +15,25 @@ git clone https://github.com/{{ github_username }}/{{ project_name }}.git
 cd {{ project_name }}
 ```
 
-Install development dependencies:
+Then download [uv](https://docs.astral.sh/uv/).
+
+That's it! you're now ready to use/develop {{ project_name }}.
+
+## Usage
+
+{{ project_name }} provides a command-line interface:
 
 ```bash
-pip install -e ".[dev,docs]"
+uv run {{ module_name }} --help
 ```
 
-Install pre-commit hooks:
+## Development
 
-```bash
-pre-commit install
-```
+Clone the repository and install `uv` as described [above](#Installation).
+Then, you can
 
-Run tests:
-
-```bash
-pytest
-```
+- install pre-commit hooks: `uv run --dev pre-commit install`
+- run tests: `uv run --dev pytest`
 
 ## Documentation
 
@@ -50,7 +42,7 @@ Documentation is available at [https://{{ github_username }}.github.io/{{ projec
 Build documentation locally:
 
 ```bash
-mkdocs serve
+uv run --group docs mkdocs serve
 ```
 
 ## Contributing
@@ -59,7 +51,7 @@ Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for det
 
 ## License
 
-This project is licensed under the {{ license }} License - see the LICENSE file for details.
+This project is licensed under the {{ license }} License - see the files in LICENSES for details.
 
 ## Changelog
 
