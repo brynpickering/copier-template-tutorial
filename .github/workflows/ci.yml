@@ -48,10 +48,7 @@ jobs:
 
       - name: Setup repo as git repo
         working-directory: ${{ runner.temp }}/test-project
-        run: |
-          git config --global --add safe.directory .
-          git config --global user.name Docs deploy
-          git config --global user.email docs@dummy.bot.com
+        run: git init
 
       - name: Test generated project
         shell: bash
