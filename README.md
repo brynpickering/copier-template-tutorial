@@ -11,15 +11,6 @@ I recommend using [pixi](https://pixi.sh/latest/installation/):
 pixi global install copier
 ```
 
-Once you have `copier` installed, create an IDE workspace with two separate directories.
-One should be the cloned repository.
-The other will be the destination for your new template-generated project.
-In VSCode, go to `File -> Add Folder to Workspace`.
-
->[!WARNING]
->Copier isn't designed to work with _local_ templates.
->When not testing, you should always generate projects from templates hosted in remote repositories.
-
 ## Usage
 
 You can either generate your templated project from your [local repository clone](#local-usage) or [directly from the remote repository](#direct-github-usage).
@@ -30,8 +21,16 @@ To generate a new project from a local clone of this template:
 
 ```bash
 cd /path/to/your-cloned-template-repository
-pixi copier copy --vcs-ref simple-template . /path/to/your-project-destination
+copier copy --vcs-ref simple-template . build
 ```
+
+You will then find your built project inside the `build` directory.
+
+
+>[!WARNING]
+>Copier isn't really designed to work with _local_ templates.
+>You can only reliably build projects in the same directory as the cloned repository.
+>When not testing, for greater flexibility and long-term maintainability, you should generate directly from the remote repository.
 
 ### Direct GitHub usage
 
