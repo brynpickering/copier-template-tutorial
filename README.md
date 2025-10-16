@@ -26,7 +26,6 @@ copier copy --vcs-ref simple-template . build
 
 You will then find your built project inside the `build` directory.
 
-
 >[!WARNING]
 >Copier isn't really designed to work with _local_ templates.
 >You can only reliably build projects in the same directory as the cloned repository.
@@ -45,11 +44,11 @@ copier copy gh:brynpickering/copier-template-tutorial --vcs-ref simple-template 
 You can keep your project up-to-date with any changes made in the template, just call:
 
 ```bash
-copier update --vcs-ref HEAD /path/to/your-project-destination
+copier update --vcs-ref simple-template build
 ```
 
 >[!NOTE]
->This will update to the latest HEAD commit.
+>This will update to the latest HEAD commit on the.
 >To only update if there has been a _tagged release_, remove `--vcs-ref HEAD` from your call.
 
 ## Development
