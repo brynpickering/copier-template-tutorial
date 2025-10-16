@@ -41,15 +41,23 @@ copier copy gh:brynpickering/copier-template-tutorial --vcs-ref simple-template 
 
 ## Updating your project
 
-You can keep your project up-to-date with any changes made in the template, just call:
+You can keep your project up-to-date with any changes made in the template.
+Just call:
 
 ```bash
 copier update --vcs-ref simple-template build
 ```
 
 >[!NOTE]
->This will update to the latest HEAD commit on the.
->To only update if there has been a _tagged release_, remove `--vcs-ref HEAD` from your call.
+>- You will be asked to answer the templating questions again, with defaults filled with your previous answers.
+>  To skip this and use your previous answers, add `--defaults` to the call.
+>- This will update to the latest HEAD commit on the.
+>  To only update if there has been a _tagged release_, remove `--vcs-ref simple-template` from your call.
+>- To update your answers but not update the template used, replace `--vcs-ref simple-template` with `--vcs-ref=:current:`.
+
+>[!WARNING]
+>Copier doesn't generally like updating from a locally cloned template.
+>You may find that it deletes your project if you use the `--defaults` flag.
 
 ## Development
 
