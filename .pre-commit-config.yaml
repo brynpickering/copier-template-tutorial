@@ -21,3 +21,7 @@ repos:
     hooks:
       - id: codespell
         args: [--ignore-words-list=crate,nd,sav,ines]
+
+ci: # https://pre-commit.ci/
+  autofix_prs: false
+  autoupdate_schedule: monthly

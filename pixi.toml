@@ -16,12 +16,6 @@ cmd = "copier copy --defaults --vcs-ref HEAD . {{ path }}"
 
 [feature.dev.dependencies]
 pre-commit = ">=3.0.0"
-ruff = ">=0.1.0"
-
-[feature.dev.tasks]
-lint = "ruff check ."
-format = "ruff format ."
-format-check = "ruff format --check ."
 
 [environments]
 default = ["dev"]
